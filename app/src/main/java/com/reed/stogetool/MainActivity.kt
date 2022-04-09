@@ -110,6 +110,8 @@ private fun Stocks(
                             fifth = "第五次补仓:${String.format("%.2f", origin * fifthFact)}",
                         )
                     )
+                    onPriceChange("")
+                    onNameChange("")
                 }
 
             }) {
