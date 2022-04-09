@@ -16,17 +16,15 @@ import androidx.compose.ui.graphics.Color.Companion.Magenta
 import androidx.compose.ui.graphics.Color.Companion.Red
 
 private val DarkColorPalette = darkColors(
-    surface = Blue,
-    onSurface = Cyan,
-    primary = Cyan,
-    onPrimary = Red
+    primary = Purple200,
+    primaryVariant = Purple700,
+    secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
-    surface = Blue,
-    onSurface = Color.White,
-    primary = Magenta,
-    onPrimary = Cyan
+    primary = Purple500,
+    primaryVariant = Purple700,
+    secondary = Teal200
 )
 
 @Composable

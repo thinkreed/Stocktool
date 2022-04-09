@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 
 import androidx.compose.material.*
 
@@ -65,8 +66,8 @@ private fun Stocks(
     onAdd: (item: StockItem) -> Unit,
     onRemove: (item: StockItem) -> Unit
 ) {
-    val (price, onPriceChange) = rememberSaveable { mutableStateOf("输入价格") }
-    val (name, onNameChange) = rememberSaveable { mutableStateOf("输入股票名称") }
+    val (price, onPriceChange) = rememberSaveable { mutableStateOf("") }
+    val (name, onNameChange) = rememberSaveable { mutableStateOf("") }
 
     val firstFact = 0.95
     val secondFact = 0.90
@@ -80,10 +81,22 @@ private fun Stocks(
             Column(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                TextField(value = name, onValueChange = onNameChange)
-                TextField(value = price, onValueChange = onPriceChange)
+                TextField(
+                    value = name,
+                    onValueChange = onNameChange,
+                    label = { Text("名字") },
+                    colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
+                )
+                TextField(
+                    value = price,
+                    onValueChange = onPriceChange,
+                    label = { Text("价格") },
+                    colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
+                )
             }
-            Button(onClick = {
+            Spacer(modifier = Modifier.width(24.dp))
+            Button(
+                onClick = {
                 val origin = price.toDoubleOrNull()
                 if (origin != null) {
                     onAdd(
